@@ -1,0 +1,24 @@
+{
+    "name": "yousef/search-engine",
+    "type": "library",
+    "require": {
+        "illuminate/support": "^9.34",
+        "elasticsearch/elasticsearch": "^8.4",
+        "handcraftedinthealps/elasticsearch-dsl": "^8.0",
+        "illuminate/database": "^9.34",
+        "larapack/dd": "^1.1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yousef\\SearchEngine\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yousef",
+            "email": "yousef.dev20@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
