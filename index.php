@@ -29,16 +29,10 @@ $capsule->bootEloquent();
 //var_dump(\Yousef\SearchEngine\models\User::query()->first());die();
 
 try {
-//    $driver = (new \Yousef\SearchEngine\SearchEngineManager())->getDriver();
     $client = \Elastic\Elasticsearch\ClientBuilder::create()->setHosts([$config['host']]);
-//    $driver->update(\Yousef\SearchEngine\models\User::query()->get());
-
-
     $source = \Yousef\SearchEngine\Searchable\DefaultImportSourceFactory::from(\Yousef\SearchEngine\models\Product::class);
     $job = new Import($source);
     ($job)->handle($client->build());
-//    ($job)->allOnQueue($source->syncWithSearchUsingQueue())
-//        ->allOnConnection($source->syncWithSearchUsing());
 
 } catch (Exception $e) {
     var_dump($e);die('some thing wrong');

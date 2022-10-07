@@ -1,3 +1,22 @@
+# Elastic Search
+
+[![Latest Stable Version](http://poser.pugx.org/yousef/payment-gateway/v)](https://packagist.org/packages/yousef/payment-gateway) [![Total Downloads](http://poser.pugx.org/yousef/payment-gateway/downloads)](https://packagist.org/packages/yousef/payment-gateway) [![Latest Unstable Version](http://poser.pugx.org/yousef/payment-gateway/v/unstable)](https://packagist.org/packages/yousef/payment-gateway) [![License](http://poser.pugx.org/yousef/payment-gateway/license)](https://packagist.org/packages/yousef/payment-gateway) [![PHP Version Require](http://poser.pugx.org/yousef/payment-gateway/require/php)](https://packagist.org/packages/yousef/payment-gateway)
+
+Simple elasticsearch, and other driver integration.
+
+## Installation
+
+Install via composer
+
+```shell
+composer require yousef/elastic-search
+```
+
+## Configuration
+
+Add the config in your entry point `config/search-engine.php` file.
+
+```php
 <?php
 
 return [
@@ -122,3 +141,34 @@ return [
     ],
 
 ];
+
+```
+
+## Usage
+
+```php
+<?php
+   try {
+    $client = \Elastic\Elasticsearch\ClientBuilder::create()->setHosts([$config['host']]);
+    $source = \Yousef\SearchEngine\Searchable\DefaultImportSourceFactory::from(\Yousef\SearchEngine\models\Product::class);
+    $job = new Import($source);
+    ($job)->handle($client->build());
+
+} catch (Exception $e) {
+    var_dump($e);die('some thing wrong');
+}
+```
+## Getting Help
+
+If you're stuck getting something to work, or need to report a bug, please [post an issue in the Github Issues for this project](https://github.com/yousefdev20/laravel-payment-gateway/issues).
+## Contributing
+
+If you're interesting in contributing code to this project, clone it by running:
+
+```shell
+git clone git@github.com:yousefdev20/elastic-search.git
+```
+
+## License
+
+This project is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
